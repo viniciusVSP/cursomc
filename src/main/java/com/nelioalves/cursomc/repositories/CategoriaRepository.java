@@ -13,6 +13,8 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
 
 	void save(List<Categoria> asList);
 
+	Categoria findOne(Integer id);
+
 	
 
 }
