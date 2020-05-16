@@ -8,4 +8,6 @@ import com.nelioalves.cursomc.domain.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
 
+	Cliente findOne(Integer id);
+
 }
