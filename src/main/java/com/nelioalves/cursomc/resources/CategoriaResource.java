@@ -16,6 +16,7 @@ import com.nelioalves.cursomc.services.CategoriaService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
+
 @RestController
 @RequestMapping(value="/categories")
 public class CategoriaResource {
@@ -25,7 +26,7 @@ public class CategoriaResource {
 	
 	
 	@RequestMapping(value="/(id)",method=RequestMethod.GET)
-	public ResponseEntity<?> find(@PathVariable Integer id) throws ObjectNotFoundException {
+	public ResponseEntity<Categoria> find(@PathVariable Integer id) throws ObjectNotFoundException {
 		Categoria obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -42,6 +43,12 @@ public class CategoriaResource {
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 		
+	}
+	
+	@RequestMapping(value="/{id})", method=RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable Integer id) throws ObjectNotFoundException{
+		service.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 
 }
